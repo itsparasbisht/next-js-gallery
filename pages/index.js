@@ -11,8 +11,6 @@ export default function Home() {
   const [page, setPage] = useState(0);
   const [totalImages, setTotalImages] = useState("");
 
-  const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     getImages();
   }, []);
@@ -47,7 +45,7 @@ export default function Home() {
         hasMore={true}
         loader={<h4>Loading...</h4>}
       >
-        {!loading ? (
+        {images.length > 0 ? (
           <>
             <Images images={images} />
             {images.length === totalImages ? (
@@ -57,7 +55,7 @@ export default function Home() {
             )}
           </>
         ) : (
-          ""
+          "loading..."
         )}
       </InfiniteScroll>
     </>
