@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { unsplash } from "../api-creds";
 import Images from "../components/Images";
+import SearchInput from "../components/SearchInput";
 
 const imagesToShow = 9;
 
@@ -39,6 +40,7 @@ export default function Home() {
 
   return (
     <>
+      <SearchInput />
       <InfiniteScroll
         dataLength={images.length}
         next={() => getImages()}
