@@ -23,9 +23,21 @@
     outline: none;
     border-radius: 7px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 2px solid white;
+    transition: all .3s;
 }
 
 .searchContainer h3 {
     padding-top: 20px;
     color: rgb(33, 33, 33);
+}
+
+.searchContainer input:focus {
+    border: 2px solid rgb(172, 172, 172);
+}
+
+@media all and (max-width: 960px) {
+    .searchContainer input {
+        width: 80%;
+    }
 }

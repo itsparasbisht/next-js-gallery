@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { unsplash } from "../api-creds";
-import Images from "../components/Images";
+// import Images from "../components/Images";
 import SearchInput from "../components/SearchInput";
+const Images = lazy(() => import("../components/Images"));
 
 const imagesToShow = 9;
 
@@ -41,25 +42,27 @@ export default function Home() {
   return (
     <>
       <SearchInput />
-      <InfiniteScroll
-        dataLength={images.length}
-        next={() => getImages()}
-        hasMore={true}
-        loader={<h4>Loading...</h4>}
-      >
-        {images.length > 0 ? (
-          <>
-            <Images images={images} />
-            {images.length === totalImages ? (
-              <h3>Nothing more to show :)</h3>
-            ) : (
-              ""
-            )}
-          </>
-        ) : (
-          "loading..."
-        )}
-      </InfiniteScroll>
+      <Suspense fallback={<p>Fetching your images, please wait</p>}>
+        <InfiniteScroll
+          dataLength={images.length}
+          next={() => getImages()}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}
+        >
+          {images.length > 0 ? (
+            <>
+              <Images images={images} />
+              {images.length === totalImages ? (
+                <h3>Nothing more to show :)</h3>
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            ""
+          )}
+        </InfiniteScroll>
+      </Suspense>
     </>
   );
 }

@@ -12,6 +12,7 @@
     width: 32%;
     height: 350px;
     object-fit: cover;
+    border-radius: 7px;
 }
 
 @media all and (max-width: 960px) {
