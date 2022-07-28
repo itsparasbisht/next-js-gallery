@@ -63,7 +63,7 @@
     color: rgb(220, 220, 220);
 }
 
-@media all and (max-width: 960px) {
+@media all and (max-width: 1100px) {
     .imagesContainer {
         width: 90vw;
     }
@@ -77,6 +77,22 @@
     .imagesContainer img {
         width: 100%;
     }
+
+    .imageDetails img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .imageDetails h4 {
+        font-size: 19px;
+        padding-top: 15px;
+    }
+
+    .imageDetails p {
+        padding: 10px;
+        font-size: 14px;
+    }
 }
 
 @media all and (max-width: 580px) {
@@ -87,5 +103,11 @@
 
     .imagesContainer img {
         width: 100%;
+    }
+
+    .imageDetails img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
     }
 }
