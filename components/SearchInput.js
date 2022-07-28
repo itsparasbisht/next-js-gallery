@@ -8,10 +8,13 @@ function SearchInput() {
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
-    clearTimeout(debounceHandler);
-    debounceHandler = setTimeout(() => {
-      getSuggestions(search);
-    }, 700);
+    setSuggestions([]);
+    if (search?.length > 0) {
+      clearTimeout(debounceHandler);
+      debounceHandler = setTimeout(() => {
+        getSuggestions(search);
+      }, 700);
+    }
   }, [search]);
 
   const getSuggestions = (search) => {
@@ -32,6 +35,10 @@ function SearchInput() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <div className={styles.suggestionsContainer}>
+          {suggestions.length > 0 &&
+            suggestions.map((item, i) => <h6 key={i}>{item.word}</h6>)}
+        </div>
         <h3>Images from Unsplash</h3>
       </form>
     </div>

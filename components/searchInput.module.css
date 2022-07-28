@@ -36,6 +36,29 @@
     border: 2px solid rgb(172, 172, 172);
 }
 
+.suggestionsContainer {
+    background-color: rgb(237, 237, 237);
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.suggestionsContainer h6 {
+    font-size: 16px;
+    padding: 5px 10px;
+    font-weight: 600;
+    color: rgb(45, 45, 45);
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.suggestionsContainer h6:hover {
+    background-color: rgb(223, 223, 223);
+}
+
 @media all and (max-width: 960px) {
     .searchContainer input {
         width: 80%;
