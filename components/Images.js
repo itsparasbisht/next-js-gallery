@@ -5,11 +5,10 @@ function Images({ images }) {
   return (
     <div className={styles.imagesContainer}>
       {images.map((image) => (
-        <img
-          key={image.id}
-          src={image.urls.regular}
-          alt={image.alt_description}
-        />
+        <div key={image.id} className={styles.imageWrapper}>
+          <img src={image.urls.regular} alt={image.alt_description} />
+          <div className={styles.imageDetails}>what is up</div>
+        </div>
       ))}
     </div>
   );
