@@ -63,4 +63,8 @@
     .searchContainer input {
         width: 80%;
     }
+
+    .suggestionsContainer {
+        width: 80%;
+    }
 }
