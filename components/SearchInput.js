@@ -9,6 +9,10 @@ function SearchInput() {
 
   useEffect(() => {
     setSuggestions([]);
+    if (suggestions?.length === 0) {
+      clearTimeout(debounceHandler);
+      setSuggestions([]);
+    }
     if (search?.length > 0) {
       clearTimeout(debounceHandler);
       debounceHandler = setTimeout(() => {
