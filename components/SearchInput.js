@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import searchQueryContext from "../context/searchQuery/SearchQueryContext";
 import styles from "./searchInput.module.css";
 
@@ -8,6 +8,7 @@ function SearchInput() {
   const [search, setSearch] = useState();
   const [suggestions, setSuggestions] = useState([]);
   const [query, setQuery] = useState("");
+  const searchRef = useRef();
 
   const [queryState, dispatch] = useContext(searchQueryContext);
   console.log(queryState);
@@ -41,8 +42,8 @@ function SearchInput() {
         <input
           type="text"
           placeholder="search for images..."
-          value={search}
           onChange={(e) => setSearch(e.target.value)}
+          ref={searchRef}
         />
         <div className={styles.suggestionsContainer}>
           {suggestions.length > 0 &&
@@ -52,7 +53,8 @@ function SearchInput() {
                 onClick={(e) => {
                   setQuery(item.word);
                   setSuggestions([]);
-                  // setSearch(item.word);
+                  searchRef.current.value = item.word;
+                  console.log(searchRef);
                   dispatch({ type: "FIND-THIS", query: item.word });
                 }}
               >
