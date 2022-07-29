@@ -51,6 +51,8 @@ function SearchInput() {
                 key={i}
                 onClick={(e) => {
                   setQuery(item.word);
+                  setSuggestions([]);
+                  // setSearch(item.word);
                   dispatch({ type: "FIND-THIS", query: item.word });
                 }}
               >
