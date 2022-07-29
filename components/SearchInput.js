@@ -36,6 +36,12 @@ function SearchInput() {
       });
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSuggestions([]);
+    dispatch({ type: "FIND-THIS", query: search });
+  };
+
   return (
     <div className={styles.searchContainer}>
       <form>
@@ -46,7 +52,7 @@ function SearchInput() {
             onChange={(e) => setSearch(e.target.value)}
             ref={searchRef}
           />
-          <button>search</button>
+          <button onClick={handleSearch}>search</button>
         </div>
         <div className={styles.suggestionsContainer}>
           {suggestions.length > 0 &&
@@ -57,7 +63,6 @@ function SearchInput() {
                   setQuery(item.word);
                   setSuggestions([]);
                   searchRef.current.value = item.word;
-                  console.log(searchRef);
                   dispatch({ type: "FIND-THIS", query: item.word });
                 }}
               >
