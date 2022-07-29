@@ -1,7 +1,6 @@
 import styles from "./images.module.css";
 
 function Images({ images }) {
-  console.log(images);
   return (
     <div className={styles.imagesContainer}>
       {images.map((image) => (

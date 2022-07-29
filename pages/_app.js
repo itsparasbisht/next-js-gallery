@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import SearchQueryState from "../context/searchQuery/SearchQueryState";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <SearchQueryState>
+      <Component {...pageProps} />
+    </SearchQueryState>
+  );
 }
 
-export default MyApp
+export default MyApp;

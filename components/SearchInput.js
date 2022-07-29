@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import searchQueryContext from "../context/searchQuery/SearchQueryContext";
 import styles from "./searchInput.module.css";
 
 let debounceHandler = null;
@@ -6,6 +7,10 @@ let debounceHandler = null;
 function SearchInput() {
   const [search, setSearch] = useState();
   const [suggestions, setSuggestions] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const [queryState, dispatch] = useContext(searchQueryContext);
+  console.log(queryState);
 
   useEffect(() => {
     setSuggestions([]);
@@ -41,7 +46,17 @@ function SearchInput() {
         />
         <div className={styles.suggestionsContainer}>
           {suggestions.length > 0 &&
-            suggestions.map((item, i) => <h6 key={i}>{item.word}</h6>)}
+            suggestions.map((item, i) => (
+              <h6
+                key={i}
+                onClick={(e) => {
+                  setQuery(item.word);
+                  dispatch({ type: "FIND-THIS", query: item.word });
+                }}
+              >
+                {item.word}
+              </h6>
+            ))}
         </div>
       </form>
     </div>
