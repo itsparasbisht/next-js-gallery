@@ -39,12 +39,15 @@ function SearchInput() {
   return (
     <div className={styles.searchContainer}>
       <form>
-        <input
-          type="text"
-          placeholder="search for images..."
-          onChange={(e) => setSearch(e.target.value)}
-          ref={searchRef}
-        />
+        <div className={styles.searchBox}>
+          <input
+            type="text"
+            placeholder="search for images..."
+            onChange={(e) => setSearch(e.target.value)}
+            ref={searchRef}
+          />
+          <button>search</button>
+        </div>
         <div className={styles.suggestionsContainer}>
           {suggestions.length > 0 &&
             suggestions.map((item, i) => (
