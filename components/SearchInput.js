@@ -23,7 +23,7 @@ function SearchInput() {
       clearTimeout(debounceHandler);
       debounceHandler = setTimeout(() => {
         getSuggestions(search);
-      }, 700);
+      }, 500);
     }
   }, [search]);
 
