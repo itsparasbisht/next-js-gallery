@@ -31,22 +31,20 @@ function SearchInput() {
   };
 
   return (
-    <>
-      <div className={styles.searchContainer}>
-        <form>
-          <input
-            type="text"
-            placeholder="search for images..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </form>
-      </div>
-      <div className={styles.suggestionsContainer}>
-        {suggestions.length > 0 &&
-          suggestions.map((item, i) => <h6 key={i}>{item.word}</h6>)}
-      </div>
-    </>
+    <div className={styles.searchContainer}>
+      <form>
+        <input
+          type="text"
+          placeholder="search for images..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className={styles.suggestionsContainer}>
+          {suggestions.length > 0 &&
+            suggestions.map((item, i) => <h6 key={i}>{item.word}</h6>)}
+        </div>
+      </form>
+    </div>
   );
 }
 
